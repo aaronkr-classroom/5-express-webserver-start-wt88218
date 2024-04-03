@@ -3,7 +3,7 @@
 
 const port = 3000,
     express = require('express'), // 애플리케이션에 express 모듈 추가
-    app = express(); // 상수 app에 express 애플리케이션 할당
+    app = express(); // 상수 app에 express 애플리케이션 할당 ,실행
 
 app
     .get('/', (req, res) => { // 홈페이지에 GET 라우트 세팅
@@ -16,8 +16,14 @@ app
         console.log(req.url);
         console.log(req.query);
 
-        res.send('Hello World!'); // res.send로 서버에서 클라이언트의 응답 발행
+        res.send('<h1>HOME</h1>Hello World!'); // res.send로 서버에서 클라이언트의 응답 발행
     })
-    .listen(port, () => { // 3000번 포트로 애플리케이션 셋업
-        console.log(`The Express server is listening on port: ${port}`);
+    .get('/about', (req, res) => {
+        console.log(req.url);
+        console.log(req.query);
+        res.send('<h1>ABOUT</h1>About Me!');
+    })
+    .listen(port, () => { // 3000번 포트로 애플리케이션 셋업 app.get('/').get('/') 다른 객체 이용
+    
+        console.log(`The Express at http://localhost:${port}`);
     });
